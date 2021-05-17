@@ -1,0 +1,165 @@
+#Subject:  Marvel Super Heroes Player's Book Character Generator
+#Author:   Palvaran
+#Website:  ideasquantified.com
+
+import random, time
+
+char_stats = []
+
+#Generating Origins
+origin_outcomes = {}
+for i in range(1, 31):
+    origin_outcomes[i] = 'Altered Human'
+for i in range(31, 61):
+    origin_outcomes[i] = 'Mutant'
+for i in range(61, 91):
+    origin_outcomes[i] = 'Hi-Tech'
+for i in range(91, 96):
+    origin_outcomes[i] = 'Robot'
+for i in range(96, 101):
+    origin_outcomes[i] = 'Alien'
+
+#Generating FASERIP_Rank1 (Altered Humans and Mutants)
+faserip_rank1_outcomes = {}
+for i in range(1, 6):
+    faserip_rank1_outcomes[i] = 'Feeble'
+for i in range(6, 11):
+    faserip_rank1_outcomes[i] = 'Poor'
+for i in range(11, 21):
+    faserip_rank1_outcomes[i] = 'Typical'
+for i in range(21, 41):
+    faserip_rank1_outcomes[i] = 'Good'
+for i in range(41, 61):
+    faserip_rank1_outcomes[i] = 'Excellent'
+for i in range(61, 81):
+    faserip_rank1_outcomes[i] = 'Remarkable'
+for i in range(81, 97):
+    faserip_rank1_outcomes[i] = 'Incredible'
+for i in range(97, 101):
+    faserip_rank1_outcomes[i] = 'Amazing'
+
+#Generating FASERIP_Rank3 (High Technology)
+faserip_rank3_outcomes = {}
+for i in range(1, 6):
+    faserip_rank3_outcomes[i] = 'Feeble'
+for i in range(6, 11):
+    faserip_rank3_outcomes[i] = 'Poor'
+for i in range(11, 41):
+    faserip_rank3_outcomes[i] = 'Typical'
+for i in range(41, 81):
+    faserip_rank3_outcomes[i] = 'Good'
+for i in range(81, 96):
+    faserip_rank3_outcomes[i] = 'Excellent'
+for i in range(96, 101):
+    faserip_rank3_outcomes[i] = 'Remarkable'
+
+#Generating FASERIP_Rank4 (Robots)
+faserip_rank4_outcomes = {}
+for i in range(1, 6):
+    faserip_rank4_outcomes[i] = 'Feeble'
+for i in range(6, 11):
+    faserip_rank4_outcomes[i] = 'Poor'
+for i in range(11, 16):
+    faserip_rank4_outcomes[i] = 'Typical'
+for i in range(16, 41):
+    faserip_rank4_outcomes[i] = 'Good'
+for i in range(41, 51):
+    faserip_rank4_outcomes[i] = 'Excellent'
+for i in range(51, 71):
+    faserip_rank4_outcomes[i] = 'Remarkable'
+for i in range(71, 91):
+    faserip_rank4_outcomes[i] = 'Incredible'
+for i in range(91, 99):
+    faserip_rank4_outcomes[i] = 'Amazing'
+for i in range(91, 101):
+    faserip_rank4_outcomes[i] = 'Monstrous'
+
+#Generating FASERIP_Rank5 (Aliens)
+faserip_rank5_outcomes = {}
+for i in range(1, 11):
+    faserip_rank5_outcomes[i] = 'Feeble'
+for i in range(11, 21):
+    faserip_rank5_outcomes[i] = 'Poor'
+for i in range(21, 31):
+    faserip_rank5_outcomes[i] = 'Typical'
+for i in range(31, 41):
+    faserip_rank5_outcomes[i] = 'Good'
+for i in range(41, 61):
+    faserip_rank5_outcomes[i] = 'Excellent'
+for i in range(61, 71):
+    faserip_rank5_outcomes[i] = 'Remarkable'
+for i in range(71, 81):
+    faserip_rank5_outcomes[i] = 'Incredible'
+for i in range(81, 96):
+    faserip_rank5_outcomes[i] = 'Amazing'
+for i in range(96, 101):
+    faserip_rank5_outcomes[i] = 'Monstrous'
+
+def get_origin(roll):
+    if roll not in origin_outcomes.keys():
+        raise ValueError('Unsupported roll: {}'.format(roll))
+    return origin_outcomes[roll]
+
+def get_faserip_rank1(roll):
+    if roll not in faserip_rank1_outcomes.keys():
+        raise ValueError('Unsupported roll: {}'.format(roll))
+    return faserip_rank1_outcomes[roll]
+
+def get_faserip_rank3(roll):
+    if roll not in faserip_rank3_outcomes.keys():
+        raise ValueError('Unsupported roll: {}'.format(roll))
+    return faserip_rank3_outcomes[roll]
+
+def get_faserip_rank4(roll):
+    if roll not in faserip_rank4_outcomes.keys():
+        raise ValueError('Unsupported roll: {}'.format(roll))
+    return faserip_rank4_outcomes[roll]
+
+def get_faserip_rank5(roll):
+    if roll not in faserip_rank5_outcomes.keys():
+        raise ValueError('Unsupported roll: {}'.format(roll))
+    return faserip_rank5_outcomes[roll]
+
+def print_stats():
+    print('Origin: ' + char_origin)
+    print('Fighting: ' + char_stats[0])
+    print('Agility: ' + char_stats[1])
+    print('Strength: ' + char_stats[2])
+    print('Endurance: ' + char_stats[3])
+    print('Reason: ' + char_stats[4])
+    print('Intuition: ' + char_stats[5])
+    print('Psyche: ' + char_stats[6])
+
+origin_roll = random.randint(1, 100)
+char_origin = get_origin(origin_roll)
+
+#FASERIP counter
+for counter in range(1,8):
+    if char_origin == 'Altered Human':
+        faserip_roll = random.randint(1, 100)
+        char_faserip = get_faserip_rank1(faserip_roll)
+        char_stats.append(char_faserip)
+    elif char_origin == 'Mutant':
+        faserip_roll = random.randint(1, 100)
+        char_faserip = get_faserip_rank1(faserip_roll)
+        char_stats.append(char_faserip)
+    elif char_origin == 'Hi-Tech':
+        faserip_roll = random.randint(1, 100)
+        char_faserip = get_faserip_rank3(faserip_roll)
+        char_stats.append(char_faserip)
+    elif char_origin == 'Robot':
+        faserip_roll = random.randint(1, 100)
+        char_faserip = get_faserip_rank4(faserip_roll)
+        char_stats.append(char_faserip)
+    elif char_origin == 'Alien':
+        faserip_roll = random.randint(1, 100)
+        char_faserip = get_faserip_rank5(faserip_roll)
+        char_stats.append(char_faserip)
+    else:
+        print('Debug')
+
+print('Begin the Character Creation Process!')
+print('Generating Origins...')
+print('You are ... ')
+time.sleep(1)
+print_stats()
