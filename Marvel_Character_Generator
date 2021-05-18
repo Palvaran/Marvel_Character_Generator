@@ -19,6 +19,39 @@ for i in range(91, 96):
 for i in range(96, 101):
     origin_outcomes[i] = 'Alien'
 
+#Powers counter
+powers_outcomes = {}
+for i in range(1, 21):
+    powers_outcomes[i] = 2
+for i in range(21, 61):
+    powers_outcomes[i] = 3
+for i in range(61, 91):
+    powers_outcomes[i] = 4
+for i in range(91, 101):
+    powers_outcomes[i] = 5
+
+#Talents counter
+talents_outcomes = {}
+for i in range(1, 21):
+    talents_outcomes[i] = 1
+for i in range(21, 61):
+    talents_outcomes[i] = 2
+for i in range(61, 91):
+    talents_outcomes[i] = 3
+for i in range(91, 101):
+    talents_outcomes[i] = 4
+
+#Contacts counter
+contacts_outcomes = {}
+for i in range(1, 21):
+    contacts_outcomes[i] = 0
+for i in range(21, 61):
+    contacts_outcomes[i] = 1
+for i in range(61, 91):
+    contacts_outcomes[i] = 2
+for i in range(91, 101):
+    contacts_outcomes[i] = 3
+
 #Generating FASERIP_Rank1 (Altered Humans and Mutants)
 faserip_rank1_outcomes = {}
 for i in range(1, 6):
@@ -120,6 +153,21 @@ def get_faserip_rank5(roll):
         raise ValueError('Unsupported roll: {}'.format(roll))
     return faserip_rank5_outcomes[roll]
 
+def get_powers(roll):
+    if roll not in powers_outcomes.keys():
+        raise ValueError('Unsupported roll: {}'.format(roll))
+    return powers_outcomes[roll]
+
+def get_talents(roll):
+    if roll not in talents_outcomes.keys():
+        raise ValueError('Unsupported roll: {}'.format(roll))
+    return talents_outcomes[roll]
+
+def get_contacts(roll):
+    if roll not in contacts_outcomes.keys():
+        raise ValueError('Unsupported roll: {}'.format(roll))
+    return contacts_outcomes[roll]
+
 def print_stats():
     print('Origin: ' + char_origin)
     print('Fighting: ' + char_stats[0])
@@ -129,6 +177,9 @@ def print_stats():
     print('Reason: ' + char_stats[4])
     print('Intuition: ' + char_stats[5])
     print('Psyche: ' + char_stats[6])
+    print('Powers: ' + str(char_powers) + ' Powers')
+    print('Talents: ' + str(char_talents) + ' Talents')
+    print('Contacts: ' + str(char_contacts) + ' Contacts')
 
 origin_roll = random.randint(1, 100)
 char_origin = get_origin(origin_roll)
@@ -157,6 +208,13 @@ for counter in range(1,8):
         char_stats.append(char_faserip)
     else:
         print('Debug')
+
+powers_roll = random.randint(1, 100)
+char_powers = get_powers(powers_roll)
+talents_roll = random.randint(1, 100)
+char_talents = get_talents(talents_roll)
+contacts_roll = random.randint(1, 100)
+char_contacts = get_contacts(contacts_roll)
 
 print('Begin the Character Creation Process!')
 print('Generating Origins...')
