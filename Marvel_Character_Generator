@@ -1,10 +1,12 @@
 #Subject:  Marvel Super Heroes Player's Book Character Generator
 #Author:   Palvaran
 #Website:  ideasquantified.com
+#Inspiration:  https://en.wikipedia.org/wiki/Marvel_Super_Heroes_(role-playing_game)
 
 import random, time
 
 char_stats = []
+health = []
 
 #Generating Origins
 origin_outcomes = {}
@@ -169,7 +171,11 @@ def get_contacts(roll):
     return contacts_outcomes[roll]
 
 def print_stats():
+    print('')
     print('Origin: ' + char_origin)
+    print('')
+    print('Primary Abilities:')
+    print('------------------')
     print('Fighting: ' + char_stats[0])
     print('Agility: ' + char_stats[1])
     print('Strength: ' + char_stats[2])
@@ -177,9 +183,23 @@ def print_stats():
     print('Reason: ' + char_stats[4])
     print('Intuition: ' + char_stats[5])
     print('Psyche: ' + char_stats[6])
+    print('')
+    print('Secondary Abilities:')
+    print('Health: ' + str(health))
+    print('Karma: ' + str(karma))  
+    print('')
+    print('Special Abilities:')
+    print('------------------')
     print('Powers: ' + str(char_powers) + ' Powers')
     print('Talents: ' + str(char_talents) + ' Talents')
     print('Contacts: ' + str(char_contacts) + ' Contacts')
+
+
+fase_dict = {}
+rip_dict = {}
+initial_rank_numbers = {
+    'Feeble': 1, 'Poor': 3, 'Typical': 5, 'Good': 8, 'Excellent': 16, 'Remarkable': 26, 'Incredible': 36, 'Amazing': 46, 'Monstrous': 63
+     }
 
 origin_roll = random.randint(1, 100)
 char_origin = get_origin(origin_roll)
@@ -215,6 +235,74 @@ talents_roll = random.randint(1, 100)
 char_talents = get_talents(talents_roll)
 contacts_roll = random.randint(1, 100)
 char_contacts = get_contacts(contacts_roll)
+
+#Slice FASERIP
+FASE = char_stats[0:4]
+RIP = char_stats[4:7]
+
+#Count FASERIP
+for c in range(len(FASE)):
+    fase_dict[FASE[c]] = FASE.count(
+        FASE[c]
+        )
+for c in range(len(RIP)):
+    rip_dict[RIP[c]] = RIP.count(
+        RIP[c]
+        )
+
+fase_list = fase_dict.items()
+rip_list = rip_dict.items()
+health = 0
+karma = 0
+
+#Calculating Health via Tuple
+FASE_tuple = tuple(FASE)
+for k in (FASE_tuple):
+    if k == 'Feeble':
+        health = health + 1
+    elif k == 'Poor':
+        health = health + 3
+    elif k == 'Typical':
+        health = health + 5
+    elif k == 'Good':
+        health = health + 8
+    elif k == 'Excellent':
+        health = health + 16
+    elif k == 'Remarkable':
+        health = health + 26
+    elif k == 'Incredible':
+        health = health + 36
+    elif k == 'Amazing':
+        health = health + 46
+    elif k == 'Monstrous':
+        health = health + 63
+    else:
+        print('in progress')
+
+#Calculating Karma via Tuple
+RIP_tuple = tuple(RIP)
+for k in (RIP_tuple):
+    if k == 'Feeble':
+        karma = karma + 1
+    elif k == 'Poor':
+        karma = karma + 3
+    elif k == 'Typical':
+        karma = karma + 5
+    elif k == 'Good':
+        karma = karma + 8
+    elif k == 'Excellent':
+        karma = karma + 16
+    elif k == 'Remarkable':
+        karma = karma + 26
+    elif k == 'Incredible':
+        karma = karma + 36
+    elif k == 'Amazing':
+        karma = karma + 46
+    elif k == 'Monstrous':
+        karma = karma + 63
+    else:
+        print('in progress')
+
 
 print('Begin the Character Creation Process!')
 print('Generating Origins...')
