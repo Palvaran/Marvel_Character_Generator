@@ -184,6 +184,7 @@ def print_stats():
     print('Psyche: ' + char_stats[6])
     print('')
     print('Secondary Abilities:')
+    print('--------------------')
     print('Health: ' + str(health))
     print('Karma: ' + str(karma))  
     print('')
@@ -192,7 +193,6 @@ def print_stats():
     print('Powers: ' + str(char_powers) + ' Powers')
     print('Talents: ' + str(char_talents) + ' Talents')
     print('Contacts: ' + str(char_contacts) + ' Contacts')
-
 
 fase_dict = {}
 rip_dict = {}
@@ -301,7 +301,6 @@ for k in (RIP_tuple):
         karma = karma + 63
     else:
         print('in progress')
-
 
 print('Begin the Character Creation Process!')
 print('Generating Origins...')
