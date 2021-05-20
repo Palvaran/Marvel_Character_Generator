@@ -6,7 +6,6 @@
 import random, time
 
 char_stats = []
-health = []
 
 #Generating Origins
 origin_outcomes = {}
