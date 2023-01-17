@@ -7,127 +7,70 @@ import random, time
 
 char_stats = []
 
-#Generating Origins
-origin_outcomes = {}
-for i in range(1, 31):
-    origin_outcomes[i] = 'Altered Human'
-for i in range(31, 61):
-    origin_outcomes[i] = 'Mutant'
-for i in range(61, 91):
-    origin_outcomes[i] = 'Hi-Tech'
-for i in range(91, 96):
-    origin_outcomes[i] = 'Robot'
-for i in range(96, 101):
-    origin_outcomes[i] = 'Alien'
+# Generating Origins
+origin_outcomes = {i: 'Altered Human' for i in range(1, 31)}
+origin_outcomes.update({i: 'Mutant' for i in range(31, 61)})
+origin_outcomes.update({i: 'Hi-Tech' for i in range(61, 91)})
+origin_outcomes.update({i: 'Robot' for i in range(91, 96)})
+origin_outcomes.update({i: 'Alien' for i in range(96, 101)})
 
-#Powers counter
-powers_outcomes = {}
-for i in range(1, 21):
-    powers_outcomes[i] = 2
-for i in range(21, 61):
-    powers_outcomes[i] = 3
-for i in range(61, 91):
-    powers_outcomes[i] = 4
-for i in range(91, 101):
-    powers_outcomes[i] = 5
+# Powers counter
+powers_outcomes = {i: 2 for i in range(1, 21)}
+powers_outcomes.update({i: 3 for i in range(21, 61)})
+powers_outcomes.update({i: 4 for i in range(61, 91)})
+powers_outcomes.update({i: 5 for i in range(91, 101)})
 
-#Talents counter
-talents_outcomes = {}
-for i in range(1, 21):
-    talents_outcomes[i] = 1
-for i in range(21, 61):
-    talents_outcomes[i] = 2
-for i in range(61, 91):
-    talents_outcomes[i] = 3
-for i in range(91, 101):
-    talents_outcomes[i] = 4
+# Talents counter
+talents_outcomes = {i: 1 for i in range(1, 21)}
+talents_outcomes.update({i: 2 for i in range(21, 61)})
+talents_outcomes.update({i: 3 for i in range(61, 91)})
+talents_outcomes.update({i: 4 for i in range(91, 101)})
 
-#Contacts counter
-contacts_outcomes = {}
-for i in range(1, 21):
-    contacts_outcomes[i] = 0
-for i in range(21, 61):
-    contacts_outcomes[i] = 1
-for i in range(61, 91):
-    contacts_outcomes[i] = 2
-for i in range(91, 101):
-    contacts_outcomes[i] = 3
+# Contacts counter
+contacts_outcomes = {i: 0 for i in range(1, 21)}
+contacts_outcomes.update({i: 1 for i in range(21, 61)})
+contacts_outcomes.update({i: 2 for i in range(61, 91)})
+contacts_outcomes.update({i: 3 for i in range(91, 101)})
 
-#Generating FASERIP_Rank1 (Altered Humans and Mutants)
-faserip_rank1_outcomes = {}
-for i in range(1, 6):
-    faserip_rank1_outcomes[i] = 'Feeble'
-for i in range(6, 11):
-    faserip_rank1_outcomes[i] = 'Poor'
-for i in range(11, 21):
-    faserip_rank1_outcomes[i] = 'Typical'
-for i in range(21, 41):
-    faserip_rank1_outcomes[i] = 'Good'
-for i in range(41, 61):
-    faserip_rank1_outcomes[i] = 'Excellent'
-for i in range(61, 81):
-    faserip_rank1_outcomes[i] = 'Remarkable'
-for i in range(81, 97):
-    faserip_rank1_outcomes[i] = 'Incredible'
-for i in range(97, 101):
-    faserip_rank1_outcomes[i] = 'Amazing'
+# Generating FASERIP_Rank1 (Altered Humans and Mutants)
+faserip_rank1_outcomes = {i: 'Feeble' for i in range(1, 6)}
+faserip_rank1_outcomes.update({i: 'Poor' for i in range(6, 11)})
+faserip_rank1_outcomes.update({i: 'Typical' for i in range(11, 21)})
+faserip_rank1_outcomes.update({i: 'Good' for i in range(21, 41)})
+faserip_rank1_outcomes.update({i: 'Excellent' for i in range(41, 61)})
+faserip_rank1_outcomes.update({i: 'Remarkable' for i in range(61, 81)})
+faserip_rank1_outcomes.update({i: 'Incredible' for i in range(81, 97)})
+faserip_rank1_outcomes.update({i: 'Amazing' for i in range(97, 101)})
 
-#Generating FASERIP_Rank3 (High Technology)
-faserip_rank3_outcomes = {}
-for i in range(1, 6):
-    faserip_rank3_outcomes[i] = 'Feeble'
-for i in range(6, 11):
-    faserip_rank3_outcomes[i] = 'Poor'
-for i in range(11, 41):
-    faserip_rank3_outcomes[i] = 'Typical'
-for i in range(41, 81):
-    faserip_rank3_outcomes[i] = 'Good'
-for i in range(81, 96):
-    faserip_rank3_outcomes[i] = 'Excellent'
-for i in range(96, 101):
-    faserip_rank3_outcomes[i] = 'Remarkable'
+# Generating FASERIP_Rank3 (High Technology)
+faserip_rank3_outcomes = {i: 'Feeble' for i in range(1, 6)}
+faserip_rank3_outcomes.update({i: 'Poor' for i in range(6, 11)})
+faserip_rank3_outcomes.update({i: 'Typical' for i in range(11, 41)})
+faserip_rank3_outcomes.update({i: 'Good' for i in range(41, 81)})
+faserip_rank3_outcomes.update({i: 'Excellent' for i in range(81, 96)})
+faserip_rank3_outcomes.update({i: 'Remarkable' for i in range(96, 101)})
 
-#Generating FASERIP_Rank4 (Robots)
-faserip_rank4_outcomes = {}
-for i in range(1, 6):
-    faserip_rank4_outcomes[i] = 'Feeble'
-for i in range(6, 11):
-    faserip_rank4_outcomes[i] = 'Poor'
-for i in range(11, 16):
-    faserip_rank4_outcomes[i] = 'Typical'
-for i in range(16, 41):
-    faserip_rank4_outcomes[i] = 'Good'
-for i in range(41, 51):
-    faserip_rank4_outcomes[i] = 'Excellent'
-for i in range(51, 71):
-    faserip_rank4_outcomes[i] = 'Remarkable'
-for i in range(71, 91):
-    faserip_rank4_outcomes[i] = 'Incredible'
-for i in range(91, 99):
-    faserip_rank4_outcomes[i] = 'Amazing'
-for i in range(91, 101):
-    faserip_rank4_outcomes[i] = 'Monstrous'
+# Generating FASERIP_Rank4 (Robots)
+faserip_rank4_outcomes = {i: 'Feeble' for i in range(1, 6)}
+faserip_rank4_outcomes.update({i: 'Poor' for i in range(6, 11)})
+faserip_rank4_outcomes.update({i: 'Typical' for i in range(11, 16)})
+faserip_rank4_outcomes.update({i: 'Good' for i in range(16, 41)})
+faserip_rank4_outcomes.update({i: 'Excellent' for i in range(41, 51)})
+faserip_rank4_outcomes.update({i: 'Remarkable' for i in range(51, 71)})
+faserip_rank4_outcomes.update({i: 'Incredible' for i in range(71, 91)})
+faserip_rank4_outcomes.update({i: 'Amazing' for i in range(91, 99)})
+faserip_rank4_outcomes.update({i: 'Monstrous' for i in range(99, 101)})
 
 #Generating FASERIP_Rank5 (Aliens)
-faserip_rank5_outcomes = {}
-for i in range(1, 11):
-    faserip_rank5_outcomes[i] = 'Feeble'
-for i in range(11, 21):
-    faserip_rank5_outcomes[i] = 'Poor'
-for i in range(21, 31):
-    faserip_rank5_outcomes[i] = 'Typical'
-for i in range(31, 41):
-    faserip_rank5_outcomes[i] = 'Good'
-for i in range(41, 61):
-    faserip_rank5_outcomes[i] = 'Excellent'
-for i in range(61, 71):
-    faserip_rank5_outcomes[i] = 'Remarkable'
-for i in range(71, 81):
-    faserip_rank5_outcomes[i] = 'Incredible'
-for i in range(81, 96):
-    faserip_rank5_outcomes[i] = 'Amazing'
-for i in range(96, 101):
-    faserip_rank5_outcomes[i] = 'Monstrous'
+faserip_rank5_outcomes = {i: 'Feeble' for i in range(1, 11)}
+faserip_rank5_outcomes.update({i: 'Poor' for i in range(11, 21)})
+faserip_rank5_outcomes.update({i: 'Typical' for i in range(21, 31)})
+faserip_rank5_outcomes.update({i: 'Good' for i in range(31, 41)})
+faserip_rank5_outcomes.update({i: 'Excellent' for i in range(41, 61)})
+faserip_rank5_outcomes.update({i: 'Remarkable' for i in range(61, 71)})
+faserip_rank5_outcomes.update({i: 'Incredible' for i in range(71, 81)})
+faserip_rank5_outcomes.update({i: 'Amazing' for i in range(81, 96)})
+faserip_rank5_outcomes.update({i: 'Monstrous' for i in range(96, 101)})
 
 def get_origin(roll):
     if roll not in origin_outcomes.keys():
